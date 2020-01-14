@@ -3,12 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import { Header } from './components/Header';
 
+
 const App: React.FC = () => {
   return (
     <>
       <Header
         title={'Hello'}
-        isActive={true}
       />
       <div className="App">
         <header className="App-header">

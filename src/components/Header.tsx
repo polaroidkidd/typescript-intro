@@ -1,14 +1,13 @@
 import React from 'react';
 
 
-// These are the basic typed props. 
 type Props = {
   title: string,
-  isActive: boolean
+  isActive?: boolean // optional
 }
 
-
-export const Header: React.FC<Props> = ({title, isActive}) => {
+// isActive is now optional and therefor needs a default argument in case this isn't provided.
+export const Header: React.FC<Props> = ({title, isActive= true}) => {
   return (
     <>
       <h1>{title}</h1>

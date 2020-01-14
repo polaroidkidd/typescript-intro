@@ -54,3 +54,23 @@ export const Header: React.FC<Props> = ({title, isActive}) => {
   );
 };
 ```
+
+## 04. Default & Optional Props
+
+Props can be marked as optional using the `?`. If this is done, the component requires the prop to contain a default value.
+
+```React
+import React from 'react';
+
+
+type Props = {
+  title: string,
+  isActive?: boolean // optional
+}
+
+// isActive is now optional and therefor needs a default argument in case this isn't provided.
+export const Header: React.FC<Props> = ({title, isActive= true}) => {
+
+[...]
+
+```
