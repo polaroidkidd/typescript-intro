@@ -1,44 +1,56 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React TypeScript Basics
+This contents of this repo is based off of the excellent [course](https://www.scotttolinski.com/) by [Scott Tolinski](https://www.scotttolinski.com/)
 
-## Available Scripts
+## 03. Typed Props
 
-In the project directory, you can run:
+`type Props` can be declared as a `type` or as an `interface`. 
 
-### `yarn start`
+What should I use? According to [this](https://medium.com/@koss_lebedev/type-aliases-vs-interfaces-in-typescript-based-react-apps-e77c9a1d5fd0)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  >  If you write object-oriented code — use interfaces, if you write functional code — use type aliases.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The main difference is
 
-### `yarn test`
+  > interfaces are more “extendable” due to the support of declaration merging, and types are more “composable” due to support of union types.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Basically, you can extend existing interfaces which might become confusing in a large code base.
 
-### `yarn build`
+Example:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```TypeScript
+interface IUser {
+  firstName: string
+  lastName: string
+}
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+interface IUser {
+  age: number
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const user: IUser = {
+  firstName: 'Jon',
+  lastName: 'Doe',
+  age: 25,
+}
+```
 
-### `yarn eject`
+Now to the course. This is how you declare and use a `type` in a Functional TS React Component
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```React
+import React from 'react';
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+// type declaration:
+type Props = {
+  title: string,
+  isActive: boolean
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+export const Header: React.FC<Props> = ({title, isActive}) => {
+  return (
+    <>
+      <h1>{title}</h1>
+      {isActive && <h3> Active</h3>}
+    </>
+  );
+};
+```
