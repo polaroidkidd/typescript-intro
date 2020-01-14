@@ -5,22 +5,11 @@ import { Header } from './components/Header';
 
 
 
-function f() {
-
-}
-
-const User = ({email, name}: User) => {
-};
 const App: React.FC = () => {
   return (
     <>
       <Header
         title={'Hello'}
-        status={'loading'}
-        thing={12}
-        thing2={['item 1', 'item 2']}
-        thing3={{}}
-        thing4={{name: 'Daniel'}}
       />
       <div className="App">
         <header className="App-header">

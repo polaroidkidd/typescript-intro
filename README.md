@@ -104,3 +104,6 @@ type Props = {
   user: User
 }
 ```
+
+
+## 06. Function Props
