@@ -17,7 +17,7 @@ Basically, you can extend existing interfaces which might become confusing in a 
 
 Example:
 
-```TypeScript
+```typescript jsx
 interface IUser {
   firstName: string
   lastName: string
@@ -36,7 +36,7 @@ const user: IUser = {
 
 Now to the course. This is how you declare and use a `type` in a Functional TS React Component
 
-```React
+```typescript jsx
 import React from 'react';
 
 // type declaration:
@@ -59,7 +59,7 @@ export const Header: React.FC<Props> = ({title, isActive}) => {
 
 Props can be marked as optional using the `?`. If this is done, the component requires the prop to contain a default value.
 
-```React
+```typescript jsx
 import React from 'react';
 
 
@@ -73,4 +73,34 @@ export const Header: React.FC<Props> = ({title, isActive= true}) => {
 
 [...]
 
+}
+
+```
+
+
+## 05. Types
+
+This video covers some common types. It does not go into specifics about how you would create these when you'd actually use the `<Header [...]/>` component.
+
+
+```typescript jsx
+// User Type
+type User = {
+  name: string;
+}
+// Common types.
+type Props = {
+  title: string, //strings
+  isActive?: boolean //booleans
+  thing: number // numbers
+  thing2: string[] //arrays of strings || booleans || numbers
+  status: 'loading' | 'loaded' // Union Type. Accepts only one of these two strings
+  thing3: object // this is an empty object. can also be declared using {}
+//  thing4: User | {}  the above is typically declared like this, if at all.
+  thing4: {
+    name: string;
+  }
+  func: () => void // Define functions. Quite common
+  user: User
+}
 ```
