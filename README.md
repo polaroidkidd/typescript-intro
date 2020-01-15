@@ -107,3 +107,57 @@ type Props = {
 
 
 ## 06. Function Props
+
+
+Way in which a function can be typed.
+
+```typescript jsx
+import React from 'react';
+
+
+type Props = {
+  // onClick: Function // function (lower-case "f") is not recognized. Topic of chapter 7.
+  // method returns a string
+  // onClick(): string // function which returns a string.
+  
+  // method which does not anything.
+  // onClick(value: string): void
+  
+  // most common way to type a function.
+  onClick: (text: string) => void;
+}
+
+
+export const Button: React.FC<Props> = ({onClick}) => {
+  return <button onClick={() => onClick("hi there")}>Click Me</button>;
+};
+```
+
+
+Accompanying App.tsx. Notice that I don't pass in the value to be logged in App.tsx but in Button.tsx
+
+```typescript jsx
+import React from 'react';
+import './App.css';
+import { Header } from './components/Header';
+import { Button } from './components/Button';
+
+const App: React.FC = () => {
+
+  return (
+    <>
+      <Header
+        title={'Hello'}
+      />
+      <Button
+        onClick={(text) => {
+          console.log(text);
+        }}
+      />
+    </>
+  );
+};
+
+export default App;
+
+```
