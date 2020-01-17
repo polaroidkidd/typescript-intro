@@ -14,6 +14,6 @@ type Props = {
 }
 
 
-export const Button: React.FC<Props> = ({onClick}) => {
-  return <button onClick={() => onClick("hi there")}>Click Me</button>;
+export const Button = ({onClick}: Props) => {
+  return <button onClick={() => onClick('hi there')}>Click Me</button>;
 };
