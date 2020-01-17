@@ -1,19 +1,18 @@
-import React from 'react';
+import React  from 'react';
 
 
 type Props = {
-  // onClick: Function // function (lower-case "f") is not recognized. Topic of chapter 7.
-  // method returns a string
-  // onClick(): string // function which returns a string.
+  // React has its own set of Events, such as React.MouseEvent. This will accept events for all clicks (bad)
+  // onClick: (e: React.MouseEvent) => void;
   
-  // method which does not anything.
-  // onClick(value: string): void
+  // Now it is specified to only accept events from a button click (good)
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
   
-  // most common way to type a function.
-  onClick: (text: string) => void;
+  // Basic input event for forms.
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void
 }
 
 
 export const Button: React.FC<Props> = ({onClick}) => {
-  return <button onClick={() => onClick("hi there")}>Click Me</button>;
+  return <button onClick={onClick}>Click Me</button>;
 };

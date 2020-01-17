@@ -13,8 +13,9 @@ const App: React.FC = () => {
         title={'Hello'}
       />
       <Button
-        onClick={(text) => {
-          console.log(text);
+        onClick={(e) => {
+          e.preventDefault();
+          console.log(e);
         }}
       />
     </>

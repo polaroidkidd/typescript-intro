@@ -161,3 +161,25 @@ const App: React.FC = () => {
 export default App;
 
 ```
+
+
+## 07. React Events in TypeScript
+
+React has its own set of Events, such as React.MouseEvent. This will accept events for all clicks (bad)
+```typescript jsx
+import React from "react"
+
+type Props = {
+  onClick: (e: React.MouseEvent) => void;
+}
+```
+
+Now it is specified to only accept events from a button click (good)
+```typescript jsx
+import React from "react"
+
+type Props = {
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+```
