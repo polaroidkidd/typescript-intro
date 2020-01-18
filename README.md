@@ -183,3 +183,40 @@ type Props = {
 }
 
 ```
+
+
+## 08. Typing Children Props
+
+The example below is receiving a `string` element as a child. 
+
+Because we are passing a string into the button component, this will work. However, down the line it will become difficult because you might want to pass a myriad of various
+components into other components.
+
+```typescript jsx
+import React from 'react';
+
+type Props = {
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+  children: string;
+}
+
+// Placing the Prop declaration into the arrow handles. Use this only when children are in the mix. 
+// Otherwise keep on using the previous syntax.
+export const Button = ({onClick, children: Props}) => {
+  return <button onClick={onClick}>{children}</button>;
+};
+```
+
+In order to solve this, declare the react component with `React.FC<Props>`. Placing the Prop declaration into the arrow handles. Use this only when children are in the mix. Otherwise keep on using the previous syntax. This way it merges the Props which are expected from `React.FC` with the props we declared.
+
+```typescript jsx
+import React from 'react';
+
+type Props = {
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+export const Button: React.FC<Props> = ({onClick, children}) => {
+  return <button onClick={onClick}>{children}</button>;
+};
+```
