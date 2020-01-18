@@ -1,18 +1,17 @@
-import React  from 'react';
+import React, { FC } from 'react';
 
 
 type Props = {
-  // React has its own set of Events, such as React.MouseEvent. This will accept events for all clicks (bad)
-  // onClick: (e: React.MouseEvent) => void;
-  
-  // Now it is specified to only accept events from a button click (good)
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+  // Because we are passing a string into the button component, this will work.
+  // However, down the line it will become difficult because you might want to pass a myriad of various
+  // components into other components.
+  // children: string;
   
-  // Basic input event for forms.
-  onChange?: (e: React.FormEvent<HTMLInputElement>) => void
 }
 
-
-export const Button: React.FC<Props> = ({onClick}) => {
-  return <button onClick={onClick}>Click Me</button>;
+// Placing the Prop declaration into the arrow handles. Use this only when children are in the mix.
+// Otherwise keep on using the previous syntax.
+export const Button: React.FC<Props> = ({onClick, children}) => {
+  return <button onClick={onClick}>{children}</button>;
 };

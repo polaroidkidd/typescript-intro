@@ -17,7 +17,8 @@ const App: React.FC = () => {
           e.preventDefault();
           console.log(e);
         }}
-      />
+      >Hello World
+      </Button>
     </>
   );
 };
