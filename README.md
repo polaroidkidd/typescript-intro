@@ -250,3 +250,23 @@ export const Input = () => {
 ```
 
 Recommendation is to set the initial type to what the state expects. If that isn't enough, union types can be used.
+
+
+## 10. useRef and typing dom elements
+
+Type refs by declaring what type of HTML Element they will be attached to. Adding the "!" to the end of "null" declares it as a read-only value (very typical for refs)
+
+```typescript jsx
+import React, { useRef, useState } from 'react';
+
+export const Input = () => {
+  const [name, setName] = useState('');
+  const ref = useRef<HTMLInputElement>(null!);
+  
+  console.log(ref?.current?.value);
+  
+  return (
+    <input ref={ref} value={name} onChange={e => setName(e.target.value)}/>
+  );
+};
+```

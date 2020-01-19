@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 export const Input = () => {
-  // Using the union type brackets (<>) we can define a state to be either of type string OR null. This will still throw an error because "value" can not be null
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
+  
+  // Type refs by declaring what type of HTML Element they will be attached to.
+  // Adding the "!" to the end of "null" declares it as a read-only value (very typical for refs)
+  const ref = useRef<HTMLInputElement>(null!);
+     // This is equivalent to tbe above null-checks
+  console.log(ref?.current?.value);
   
   return (
-    <input value={name} onChange={e => setName(e.target.value)}/>
+    <input ref={ref} value={name} onChange={e => setName(e.target.value)}/>
   );
 };
