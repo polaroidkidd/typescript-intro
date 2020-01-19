@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Header } from './components/Header';
 import { Button } from './components/Button';
+import { Input } from './components/Input';
 
 
 const App: React.FC = () => {
@@ -19,6 +20,8 @@ const App: React.FC = () => {
         }}
       >Hello World
       </Button>
+      
+      <Input/>
     </>
   );
 };

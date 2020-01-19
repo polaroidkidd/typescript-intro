@@ -220,3 +220,33 @@ export const Button: React.FC<Props> = ({onClick, children}) => {
   return <button onClick={onClick}>{children}</button>;
 };
 ```
+
+## 09. Typing useState
+
+Because the default state is set to '', typescript will automatically recognized that the `useState` instance  accepts texts values. TypeScript is doing it's job implicity.
+```typescript jsx
+import React from 'react';
+
+export const Input = () => {
+  const [name, setName] = React.useState('');
+  return (
+    <input value={name} onChange={e => setName(e.target.value)}/>
+  );
+};
+```
+
+Using the union type brackets (<>) we can define a state to be either of type string OR null. This will still throw an error because "value" can not be null.
+
+```typescript jsx
+import React, { useState } from 'react';
+
+export const Input = () => {
+  const [name, setName] = useState<string | null>("");
+  
+  return (
+    <input value={name} onChange={e => setName(e.target.value)}/>
+  );
+};
+```
+
+Recommendation is to set the initial type to what the state expects. If that isn't enough, union types can be used.
