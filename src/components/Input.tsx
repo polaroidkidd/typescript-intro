@@ -7,7 +7,7 @@ export const Input = () => {
   // Adding the "!" to the end of "null" declares it as a read-only value (very typical for refs)
   const ref = useRef<HTMLInputElement>(null!);
      // This is equivalent to tbe above null-checks
-  console.log(ref?.current?.value);
+  // console.log(ref?.current?.value);
   
   return (
     <input ref={ref} value={name} onChange={e => setName(e.target.value)}/>
