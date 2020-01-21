@@ -7,20 +7,8 @@ type State = {
 }
 
 type Action = {
-  type: 'one' | 'two' // using unionTypes to declare a specific set of allowed actions.
-  // Optionally define a payload of any type (object, boolean, etc.)
-  // payload: string
+  type: 'one' | 'two'
 }
-
-
-// Syntax for declaring multiple actions. This can also be used to type which payloads will be accepted.
-type ActionExtended =
-  | { type: 'one', payload: boolean }
-  | { type: 'two' }
-  | { type: 'three' }
-  | { type: 'four' }
-  | { type: 'five' };
-
 
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
@@ -34,7 +22,6 @@ const reducer = (state: State, action: Action) => {
         rValue: false
       };
     }
-    // Required in order to tell TS what state should be accepted in the default case.
     default: {
       return state;
     }
