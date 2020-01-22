@@ -345,3 +345,41 @@ type ActionExtended =
 
 
 ```
+
+## 13. useEffect and Custom Hooks
+
+
+This custom hook es designed to execute some code depending on weather a ref is clicked or not (close modal type).
+
+It takes a ref to the HTML Element and the handler function. Because the handler function adds `DOM` listeners (as opposed to React listeners)
+it has to be declared as standard Mouse/Touch Events (both need to be declared because we could be on a mobile device).
+
+Additionally, because we are mutating the reference, we need to declare the `ref` as a `React.MutableRefObject<HTMLElement>`. 
+```typescript jsx
+
+import React, { useEffect } from 'react';
+
+
+const useClickOutside = (
+  ref: React.MutableRefObject<HTMLElement>,
+  handler: (event: MouseEvent | TouchEvent) => void) => {
+  useEffect(() => {
+    const listener = (event: MouseEvent | TouchEvent) => {
+      if (!ref.current || ref.current.contains(event.target as Node)) {
+        return;
+      }
+      handler(event);
+    };
+    
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener );
+    return () => {
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
+      
+    };
+  }, [handler, ref]);
+};
+
+export { useClickOutside };
+```
