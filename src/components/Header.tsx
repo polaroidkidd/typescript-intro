@@ -1,13 +1,12 @@
 import React from 'react';
 
 
-// Common types.
 type Props = {
-  title: string, //strings
-  isActive?: boolean //booleans
+  title: string,
+  isActive?: boolean
 }
 
-export const Header: React.FC<Props> = ({title, isActive= true}) => {
+export const Header: React.FC<Props> = ({title, isActive = true}) => {
   return (
     <>
       <h1>{title}</h1>

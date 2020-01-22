@@ -33,9 +33,9 @@ export const ReducerButtons = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   
   
-   const ref = useRef<HTMLDivElement>(null!);
+  const ref = useRef<HTMLDivElement>(null!);
   useClickOutside(ref, () => {
-    console.log("Clicked Outside") // handler passed into useClickOutside
+    console.log('Clicked Outside'); // handler passed into useClickOutside
   });
   return (
     <div ref={ref}>
