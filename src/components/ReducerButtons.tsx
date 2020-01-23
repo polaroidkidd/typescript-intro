@@ -1,5 +1,6 @@
-import React, { useReducer, useRef } from 'react';
+import React, { useContext, useReducer, useRef } from 'react';
 import { useClickOutside } from './useClickOutside';
+import { GlobalContext } from './GlobalState';
 
 const initialState: State = {rValue: true};
 
@@ -31,7 +32,8 @@ const reducer = (state: State, action: Action) => {
 
 export const ReducerButtons = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  
+  // TS implicitly types the React.Context. Attempting to extract non-existent properties will throw errors.
+  const {rValue} = useContext(GlobalContext);
   
   const ref = useRef<HTMLDivElement>(null!);
   useClickOutside(ref, () => {
@@ -41,7 +43,7 @@ export const ReducerButtons = () => {
     <div ref={ref}>
       <button onClick={() => dispatch({type: 'one'})}>Action One</button>
       <button onClick={() => dispatch({type: 'two'})}>Action Two</button>
-      {state?.rValue ? <h1>visible</h1> : 'invisible'}
+      {rValue ? <h1>visible</h1> : 'invisible'}
     </div>
   );
 };

@@ -388,3 +388,51 @@ export { useClickOutside };
 ## 14. Generics
 
 By example of the `useClickOutside` hook. Before we declared its `ref` type as `ref: React.MutableRefObject<HTMLDivElement>`. This did work, but did not allow us to use it on elements other than `<div/>`. Because `HTMLDivElement` extends `HTMLElement`, we can declare the `ref` in the hook as `ref: React.MutableRefObject<HTMLElement>`. When it's actually used, the ref can contain any `HTMLElement` and TS will not throw any errors.
+
+
+## 15. useContext (part 1)
+
+TS implicitly types the declared context without having to type it. Below is an example implementation.
+
+```typescript jsx
+import { createContext } from 'react';
+
+export const initialValues = {
+  rValue: true
+};
+
+export const GlobalContext = createContext(initialValues);
+```
+
+We can use this example in `ReducerButtons.tsx` like this.
+```typescript jsx
+import { useContext } from "react";
+import { GlobalContext } from './GlobalState';
+
+const {rValue} = useContext(GlobalContext);
+```
+
+Attempts to destructor properties, which don't exist, will throw TS errors.
+
+```typescript jsx
+import { useContext } from "react";
+import { GlobalContext } from './GlobalState';
+
+const {does-not-exist} = useContext(GlobalContext);
+```
+
+This works just great for most cases. We can also type the context should we want to.
+
+```typescript jsx
+import { createContext } from 'react';
+
+type InitialValues = {
+  rValue: boolean
+}
+
+export const initialValues: InitialValues = {
+  rValue: true
+};
+
+export const GlobalContext = createContext(initialValues);
+```
