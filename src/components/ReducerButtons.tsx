@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from 'react';
 import { useClickOutside } from './useClickOutside';
 import { GlobalContext } from './GlobalState';
-
+import styled from 'styled-components';
 
 export const ReducerButtons = () => {
   const ref = useRef<HTMLDivElement>(null!);
