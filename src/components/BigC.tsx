@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 
-class Bigc extends Component {
+type State = {
+  shouldRender: boolean
+}
+
+
+type Props = {
+  title: string;
+}
+
+class BigC extends Component<Props, State> {
   render() {
     return (
       <div>
@@ -10,4 +19,4 @@ class Bigc extends Component {
   }
 }
 
-export default Bigc;
+export default BigC;

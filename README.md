@@ -531,3 +531,35 @@ export const ReducerButtons = () => {
   );
 };
 ```
+
+
+## 17. Class Based Components
+
+Classes and FC are quite similar. The following example illustrates a simple example.
+
+`type` and `state` definitions are placed inside generic braces (`<` and `>`).
+
+```typescript jsx
+import React, { Component } from 'react';
+
+type State = {
+  shouldRender: boolean
+}
+
+
+type Props = {
+  title: string;
+}
+
+class BigC extends Component<Props, State> {
+  render() {
+    return (
+      <div>
+        <h1>I'm in a class component</h1>
+      </div>
+    );
+  }
+}
+
+export default BigC;
+```

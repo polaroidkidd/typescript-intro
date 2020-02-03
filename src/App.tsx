@@ -5,7 +5,7 @@ import { Button } from './components/Button';
 import { Input } from './components/Input';
 import { ReducerButtons } from './components/ReducerButtons';
 import { GlobalProvider } from './components/GlobalState';
-import Bigc from './components/Bigc';
+import BigC from './components/BigC';
 
 const App: React.FC = () => {
   
@@ -14,7 +14,9 @@ const App: React.FC = () => {
       <Header
         title={'Hello'}
       />
-      <Bigc/>
+      <BigC
+        title="Class"
+      />
       <Button
         onClick={(e) => {
           e.preventDefault();
