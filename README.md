@@ -585,4 +585,15 @@ Pros for Interfaces:
  
  What ever you choose, ***stick to it!***
  
+ ## 19. Libraries & Types
  
+ Basically, when you install a third party library, which doesn't have types you have two options.
+ 
+  1) Declare the types yourself in a `*.d.ts` file
+  2) Install the types (usually `@types/LIBRARYMANE`)
+ 
+ An example `*.d.ts` file can look as simple as this:
+ 
+ ```typescript jsx
+declare module 'styled-components' // This can allow you to use third-party un-typed libs.
+```

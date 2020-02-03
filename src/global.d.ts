@@ -1,0 +1,1 @@
+declare module 'styled-components' // This can allow you to use third-party un-typed libs.
