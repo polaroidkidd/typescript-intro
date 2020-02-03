@@ -563,3 +563,26 @@ class BigC extends Component<Props, State> {
 
 export default BigC;
 ```
+
+## 18. Interfaces vs. Types
+
+The gist from several articles is
+ > When you come from OOP, use `interface`, if you're into functional programming, go for `type`
+
+
+Pros for Types:
+  * More constrained
+  * Better for intersecting
+  * Better in error messages
+  * Can be used in unions
+ 
+Pros for Interfaces:
+  * Better when authoring a library
+  * Extendable
+  * Can be augmented
+ 
+ Helpful -> https://www.educba.com/typescript-type-vs-interface/
+ 
+ What ever you choose, ***stick to it!***
+ 
+ 
